@@ -1,14 +1,12 @@
-// routes/auth.js
 const express = require("express");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const router = express.Router();
 
-router.post("/register", async (req, res) => {
-  const hashed = await bcrypt.hash(req.body.password, 10);
-  // save user
-});
+const {
+  registerUser,
+  loginUser,
+} = require("../controllers/authController");
 
-router.post("/login", async (req, res) => {
-  // compare password
-  // return JWT
-});
+router.post("/register", registerUser);
+router.post("/login", loginUser);
+
+module.exports = router;
